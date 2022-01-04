@@ -46,9 +46,9 @@ And then subscribing to it is done in much the same way:
 
 ## Acknowledgements
 
-Clients must acknowledge (or not acknowledge) messages in the competing consumer model. If you enable auto-ack the subscription will automatically acknowledge messages once your handler completes them. If an error occurs, it will shut down your subscription with a message and the error.
+Clients must acknowledge (or not acknowledge) messages in the competing consumer model.
 
-You can choose to not auto-ack messages. This can be useful when you have multi-threaded processing of messages in your subscriber and need to pass control to something else. If you want to manually acknowlegde events, you need to set this option when subscribing and then acknowledge or not acknowledge messages as you handle them.
+If processing is successful, you must send an Ack (Acknowledge) to the server to let it know that the message has been handled. If processing fails for some reason, then you can Nack (Not Acknowledge) the message and tell the server how to handle the failure.
 
 @[code{subscribe-to-persistent-subscription-with-manual-acks}](../dotnet/21.2/samples/persistent-subscriptions/Program.cs)
 
